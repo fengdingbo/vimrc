@@ -36,7 +36,7 @@ endfunction
 " 按F2可直接拿当前文件到PHP进行解析并运行
 map <special> <F2> <esc><S-:>w! %<cr><esc><S-:>!"/usr/bin/php" %<cr>
 map <F4> :TlistToggle <cr>
-map <F3> :wq<cr>
+map <F3> :wq <cr>
 " nmap <C-t> a<C-R>=strftime("%c")<CR> <Esc>
 
 set tags=/home/qiufeng/tmp/php/php-src/tags
@@ -49,3 +49,13 @@ let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
+
+
+""""""""""""""""""""""""""""""
+" winmanager
+""""""""""""""""""""""""""""""
+let g:winManagerWindowLayout='FileExplorer|BufExplorer'
+let g:persistentBehaviour=0 
+let g:winManagerWidth=20
+let g:defaultExplorer=1
+map <F5> :WMToggle <cr>
