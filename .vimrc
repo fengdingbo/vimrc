@@ -35,15 +35,17 @@ function AddPHPFuncList()
 endfunction
 " 按F2可直接拿当前文件到PHP进行解析并运行
 map <special> <F2> <esc><S-:>w! %<cr><esc><S-:>!"/usr/bin/php" %<cr>
+map <F4> :TlistToggle <cr>
 map <F3> :wq<cr>
 " nmap <C-t> a<C-R>=strftime("%c")<CR> <Esc>
-nmap <C-t> :call AddTitle()
-function AddTitle()
-	call append(1,"/**")
-	call append(2," * ")
-	call append(3," * @date ".strftime("%c"))
-	call append(4," * @autthor qiufeng")
-	call append(5," * @link http://www.fengdingbo.com")
-	call append(6," */")
-	:3
-endfunction
+
+set tags=/home/qiufeng/tmp/php/php-src/tags
+set autochdir
+
+""""""""""""""""""""""""""""""
+" Tag list (ctags)
+""""""""""""""""""""""""""""""
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
