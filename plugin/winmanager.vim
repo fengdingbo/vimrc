@@ -13,12 +13,16 @@
 " See ":help winmanager" for additional details.
 " ============================================================================
 
+"set auto open Winmanager 
+if g:AutoOpenWinManager 
+    autocmd VimEnter * nested call s:StartWindowsManager()|1wincmd w|q 
+endif
+
 " quit if the user doesnt want us or if we are already loaded.
 if exists("loaded_winmanager")
 	finish
 end
 let loaded_winmanager = 1
-
 " width of the explorer windows 
 if !exists("g:winManagerWidth")
 	let g:winManagerWidth = 25
@@ -271,7 +275,7 @@ function! <SID>StartWindowsManager()
 		let cen = 1
 		" for now assume that the explorer windows always stay on the left.
 		" TODO: make this optional later
-		wincmd H
+		wincmd L
 		" set up the correct width
 		exe g:winManagerWidth.'wincmd |'
 	end
@@ -1062,6 +1066,9 @@ function! <SID>ToggleWindowsManager()
 		call s:CloseWindowsManager()
 	else
 		call s:StartWindowsManager()
+		" 	NERD_tree need this. 打开时会有一个空白窗口，要把他关闭。
+		exe '1wincmd w'
+		exe 'q'
 	end
 endfunction
 
