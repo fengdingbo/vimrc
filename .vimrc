@@ -4,24 +4,37 @@
 " Blog: http://www.fengdingbo.com/
 " Since: 2010-04-01
 " =======================================
+
+" 语法高亮
 syntax on
+
+" 行号和标尺
 set number
-set autoindent
 set ruler
-"set tabstop=4
+set rulerformat=%15(%c%V\ %p%%%)
+
+" 缩进
+set autoindent
+
+" 制表符
 set ts=4
 set expandtab
+
+" 搜索
 set incsearch
 set showmatch
-" 高亮显示当前行
-set cursorline
 " 在搜索的时候忽略大小写
 set ignorecase
+
+" 高亮显示当前行
+set cursorline
+
 " 高亮被搜索的句子（phrases）
 set hlsearch
-" set mouse=a
-" set shiftwidth
-" set background=dark
+map ,h :nohl<CR>
+
+" 设置在粘贴的时候不自动缩进
+set paste 
 
 " Reopening a file
 " VIM jump to the last position
